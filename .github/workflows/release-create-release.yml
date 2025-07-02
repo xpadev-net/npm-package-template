@@ -67,7 +67,7 @@ jobs:
         run: |
           pnpm version ${{ steps.version.outputs.new_version }} --no-git-tag-version
           git add package.json pnpm-lock.yaml
-          git commit -m "chore: bump version to v${{ steps.version.outputs.new_version }}"
+          git commit -m "chore: bump version to v${{ steps.version.outputs.new_version }}" --author="${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>" -n
           git push origin develop
           
       - name: Create PR from develop to release
